@@ -53,6 +53,14 @@ return require('packer').startup(function(use)
   use ({
 	"windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
+    });
+
+  use({ "bluz71/vim-moonfly-colors",
+        as = "moonfly", 
+        config = function()
+            require("moonfly").setup()
+            vim.cmd('colorscheme moon-fly')
+        end
     })
 
 

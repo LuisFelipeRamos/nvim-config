@@ -16,17 +16,23 @@ return require('packer').startup(function(use)
 	  'rose-pine/neovim',
 	  as = 'rose-pine',
 	  config = function()
-		  require("rose-pine").setup()
-		  vim.cmd('colorscheme rose-pine')
+		  require("rose-pine").setup({})
 	  end
   })
-
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
   use('ThePrimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  use 'nvim-tree/nvim-web-devicons'
+  use {
+      'nvim-tree/nvim-tree.lua',
+      requires = {
+          'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      },
+      tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
 
   use {
   'VonHeikemen/lsp-zero.nvim',
@@ -48,21 +54,14 @@ return require('packer').startup(function(use)
     -- Snippets
     {'L3MON4D3/LuaSnip'},             -- Required
     {'rafamadriz/friendly-snippets'}, -- Optional
+    }
   }
-}
+
   use ({
 	"windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
     });
 
-  use({ "bluz71/vim-moonfly-colors",
-        as = "moonfly", 
-        config = function()
-            require("moonfly").setup()
-            vim.cmd('colorscheme moon-fly')
-        end
-    })
-
-
+  use { "bluz71/vim-moonfly-colors", as = "moonfly" }
 
   end)
